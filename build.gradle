@@ -19,8 +19,11 @@ buildscript {
 
     ext {
         rxKotlinVersion = "2.2.0"
+        rxAndroidVersion = "2.0.2"
+
         libs = [
                 rxKotlin: ('io.reactivex.rxjava2:rxkotlin:' + rxKotlinVersion),
+                rxAndroid: ('io.reactivex.rxjava2:rxandroid:' + rxAndroidVersion),
         ]
     }
 

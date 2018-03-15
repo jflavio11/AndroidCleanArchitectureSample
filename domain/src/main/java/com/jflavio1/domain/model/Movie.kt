@@ -6,7 +6,7 @@ package com.jflavio1.domain.model
  * @author Jose Flavio - jflavio90@gmail.com
  * @since  14/3/17
  */
-class Movie() {
+open class Movie() {
 
     lateinit var id: String
     lateinit var movieName: String

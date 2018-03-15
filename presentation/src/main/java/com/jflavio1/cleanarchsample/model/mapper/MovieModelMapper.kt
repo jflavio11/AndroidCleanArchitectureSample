@@ -13,4 +13,19 @@ class MovieModelMapper {
 
     fun transformMovie(movie: Movie): MovieModel = MovieModel(movie.id, movie.movieName, movie.movieDirector, movie.movieDuration, movie.year)
 
+    fun transformListMovie(movies: List<Movie>): ArrayList<MovieModel> {
+
+        val list: ArrayList<MovieModel> = arrayListOf()
+
+        for (movie: Movie in movies) {
+
+            list.add(MovieModel(movie.id, movie.movieName, movie.movieDirector, movie
+                    .movieDuration, movie.year))
+
+        }
+
+        return list
+
+    }
+
 }

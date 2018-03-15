@@ -1,5 +1,7 @@
 package com.jflavio1.cleanarchsample.presenter
 
+import com.jflavio1.cleanarchsample.view.BaseView
+
 /**
  * ShowMoviesPresenter
  *

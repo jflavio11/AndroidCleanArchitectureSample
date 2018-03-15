@@ -10,8 +10,6 @@ import com.jflavio1.cleanarchsample.view.BaseView
  */
 interface BasePresenter {
 
-    fun initView(view: BaseView)
-
     fun resume()
 
     fun pause()
