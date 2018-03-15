@@ -4,6 +4,9 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.jflavio1.cleanarchsample.R
 
+/**
+ * @author Jose Flavio
+ */
 class ShowMoviesListActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
