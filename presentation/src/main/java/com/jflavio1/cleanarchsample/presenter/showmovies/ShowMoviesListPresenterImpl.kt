@@ -2,7 +2,6 @@ package com.jflavio1.cleanarchsample.presenter.showmovies
 
 import com.jflavio1.cleanarchsample.model.MovieModel
 import com.jflavio1.cleanarchsample.model.mapper.MovieModelMapper
-import com.jflavio1.cleanarchsample.presenter.BasePresenter
 import com.jflavio1.cleanarchsample.presenter.ShowMoviesPresenter
 import com.jflavio1.cleanarchsample.view.ShowMoviesView
 import com.jflavio1.domain.interactors.DefaultObserver
@@ -18,6 +17,7 @@ import com.jflavio1.domain.model.Movie
 class ShowMoviesListPresenterImpl(var view: ShowMoviesView<MovieModel>, var getMovies: ShowMoviesUseCaseImpl) : ShowMoviesPresenter<MovieModel> {
 
     private lateinit var movieModelMapper: MovieModelMapper
+
     init {
         this.view.initPresenter(this)
     }
@@ -43,7 +43,7 @@ class ShowMoviesListPresenterImpl(var view: ShowMoviesView<MovieModel>, var getM
         this.getMovies.dispose()
     }
 
-    private class MoviesObserver(val view: ShowMoviesView<MovieModel>) : DefaultObserver<List<Movie>>() {
+    private inner class MoviesObserver(val view: ShowMoviesView<MovieModel>) : DefaultObserver<List<Movie>>() {
 
         override fun onComplete() {
             view.hideLoader()

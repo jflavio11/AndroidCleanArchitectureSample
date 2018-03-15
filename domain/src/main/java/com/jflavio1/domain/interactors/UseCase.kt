@@ -16,11 +16,10 @@ import io.reactivex.schedulers.Schedulers
  */
 abstract class UseCase<T, Params> {
 
-    private lateinit var disposables: CompositeDisposable
+    private var disposables: CompositeDisposable = CompositeDisposable()
     private var executor: PostExecutor
 
     constructor(executor: PostExecutor) {
-        this.disposables = CompositeDisposable()
         this.executor = executor
     }
 

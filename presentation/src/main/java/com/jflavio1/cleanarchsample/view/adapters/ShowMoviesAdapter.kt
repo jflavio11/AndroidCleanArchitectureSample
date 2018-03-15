@@ -22,6 +22,11 @@ class ShowMoviesAdapter : RecyclerView.Adapter<ShowMoviesAdapter.MovieHolder>() 
         return MovieHolder(LayoutInflater.from(parent!!.context).inflate(R.layout.item_movie, parent, false))
     }
 
+    fun updateList(list: ArrayList<MovieModel>){
+        this.movieList = list
+        notifyDataSetChanged()
+    }
+
     override fun getItemCount(): Int = movieList.size
 
     override fun onBindViewHolder(holder: MovieHolder?, position: Int) {
