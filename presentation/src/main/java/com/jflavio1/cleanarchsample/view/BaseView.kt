@@ -10,12 +10,6 @@ import android.content.Context
  */
 interface BaseView {
 
-    fun showLoader()
-
-    fun hideLoader()
-
-    fun showError(errorMessage: String)
-
     fun getContext(): Context
 
 }
