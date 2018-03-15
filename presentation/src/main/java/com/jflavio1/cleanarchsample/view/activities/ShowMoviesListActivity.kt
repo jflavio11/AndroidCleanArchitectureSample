@@ -10,7 +10,7 @@ import com.jflavio1.cleanarchsample.view.ShowMoviesView
 /**
  * @author Jose Flavio
  */
-class ShowMoviesListActivity : AppCompatActivity(), ShowMoviesView<ArrayList<MovieModel>> {
+class ShowMoviesListActivity : AppCompatActivity(), ShowMoviesView<MovieModel> {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -36,6 +36,7 @@ allprojects {
         compileSdkVers = 26
         minSdkVers = 19
         targetSdkVers = 26
+        supportVersion = "26.0.2"
     }
 
 }
