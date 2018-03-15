@@ -11,7 +11,7 @@ import com.jflavio1.cleanarchsample.presenter.ShowMoviesPresenter
 interface ShowMoviesView<T> : BaseLoadDataView<ShowMoviesPresenter<T>> {
 
     /**
-     * T could be a [HashMap] if the repository is Firebase or [ArrayList] if it is more simple (no too much data)
+     * T is the movie object class type.
      */
     fun renderMovieList(movieList: ArrayList<T>)
 
