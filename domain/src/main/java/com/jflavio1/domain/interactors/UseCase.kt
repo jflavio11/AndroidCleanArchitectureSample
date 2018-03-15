@@ -20,6 +20,7 @@ abstract class UseCase<T, Params> {
     private var executor: PostExecutor
 
     constructor(executor: PostExecutor) {
+        this.disposables = CompositeDisposable()
         this.executor = executor
     }
 

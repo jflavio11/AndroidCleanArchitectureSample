@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import android.widget.Toast
 import com.jflavio1.cleanarchsample.R
 import com.jflavio1.cleanarchsample.UIThread
 import com.jflavio1.cleanarchsample.model.MovieModel
@@ -25,6 +26,7 @@ class ShowMoviesListActivity : AppCompatActivity(), ShowMoviesView<MovieModel> {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_show_movies_list)
         ShowMoviesListPresenterImpl(this, ShowMoviesUseCaseImpl(MoviesRepositoryImpl(), UIThread()))
+        this.presenter.loadMovieList()
     }
 
     override fun initPresenter(presenter: ShowMoviesPresenter<MovieModel>) {
@@ -42,10 +44,17 @@ class ShowMoviesListActivity : AppCompatActivity(), ShowMoviesView<MovieModel> {
 
     override fun getContext(): Context = this
 
+    // todo, use adapter and recycler view
     override fun renderMovieList(movieList: ArrayList<MovieModel>) {
         for (movie: MovieModel in movieList) {
             Log.d(TAG, "Movie loaded: ${movie.movieName}")
+            //Toast.makeText(this, "Movie loaded: ${movie.movieName}", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        this.presenter.destroy()
     }
 
 }

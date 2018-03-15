@@ -40,6 +40,7 @@ class ShowMoviesListPresenterImpl(var view: ShowMoviesView<MovieModel>, var getM
     }
 
     override fun destroy() {
+        this.getMovies.dispose()
     }
 
     private class MoviesObserver(val view: ShowMoviesView<MovieModel>) : DefaultObserver<List<Movie>>() {

@@ -9,7 +9,7 @@ import io.reactivex.Observable
  * @author Jose Flavio - jflavio90@gmail.com
  * @since  14/3/17
  */
-open interface MoviesRepository {
+interface MoviesRepository {
 
     fun getMovies(): Observable<List<Movie>>
 
