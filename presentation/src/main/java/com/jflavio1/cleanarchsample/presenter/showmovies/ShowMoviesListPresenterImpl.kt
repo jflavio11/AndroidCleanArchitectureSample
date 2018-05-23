@@ -4,7 +4,6 @@ import com.jflavio1.cleanarchsample.model.MovieModel
 import com.jflavio1.cleanarchsample.model.mapper.MovieModelMapper
 import com.jflavio1.cleanarchsample.presenter.ShowMoviesPresenter
 import com.jflavio1.cleanarchsample.view.ShowMoviesView
-import com.jflavio1.domain.interactors.DefaultObserver
 import com.jflavio1.domain.interactors.ShowMoviesUseCaseImpl
 import com.jflavio1.domain.model.Movie
 import io.reactivex.observers.DisposableObserver
@@ -17,7 +16,7 @@ import io.reactivex.observers.DisposableObserver
  */
 class ShowMoviesListPresenterImpl(var view: ShowMoviesView<MovieModel>, var getMovies: ShowMoviesUseCaseImpl) : ShowMoviesPresenter<MovieModel> {
 
-    private lateinit var movieModelMapper: MovieModelMapper
+    private var mapper = MovieModelMapper()
 
     init {
         this.view.initPresenter(this)
@@ -30,7 +29,6 @@ class ShowMoviesListPresenterImpl(var view: ShowMoviesView<MovieModel>, var getM
             }
 
             override fun onNext(t: List<Movie>) {
-                val mapper = MovieModelMapper()
                 view.renderMovieList(mapper.transformListMovie(t))
             }
 
