@@ -11,5 +11,9 @@ import io.reactivex.android.schedulers.AndroidSchedulers
  * @since  14/3/17
  */
 class UIThread : PostExecutor {
+
+    /**
+     * Returns the main application thread (UI Thread) as a [Scheduler] object.
+     */
     override fun getScheduler(): Scheduler = AndroidSchedulers.mainThread()
 }

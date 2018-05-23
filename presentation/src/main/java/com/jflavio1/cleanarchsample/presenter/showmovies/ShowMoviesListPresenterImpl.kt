@@ -22,6 +22,9 @@ class ShowMoviesListPresenterImpl(var view: ShowMoviesView<MovieModel>, var getM
         this.view.initPresenter(this)
     }
 
+    /**
+     * Execute the current use case that will retrieve data from the Repository implementation.
+     */
     override fun loadMovieList() {
         this.getMovies.executeUseCase(object: DisposableObserver<List<Movie>>() {
             override fun onComplete() {
@@ -52,6 +55,9 @@ class ShowMoviesListPresenterImpl(var view: ShowMoviesView<MovieModel>, var getM
     override fun showErrorMessage(message: String) {
     }
 
+    /**
+     * When the activity is destroyed, we dispose all Observers that were added when the use cases were executed.
+     */
     override fun destroy() {
         this.getMovies.dispose()
     }

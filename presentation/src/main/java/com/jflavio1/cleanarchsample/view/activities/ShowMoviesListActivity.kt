@@ -31,8 +31,12 @@ class ShowMoviesListActivity : AppCompatActivity(), ShowMoviesView<MovieModel> {
         setContentView(R.layout.activity_show_movies_list)
         ShowMoviesListPresenterImpl(this, ShowMoviesUseCaseImpl(MoviesRepositoryImpl(), UIThread()))
         adapter = ShowMoviesAdapter()
-        showMoviesActivity_rv.adapter = adapter
-        showMoviesActivity_rv.layoutManager = LinearLayoutManager(this)
+
+        showMoviesActivity_rv.let {
+            it.adapter = adapter
+            it.layoutManager = LinearLayoutManager(this@ShowMoviesListActivity)
+        }
+
         this.presenter.loadMovieList()
     }
 
