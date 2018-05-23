@@ -56,8 +56,10 @@ abstract class UseCase<T, Params> {
     }
 
     /**
-     * Adds a disposable (Observer) to our disposable list [disposables]. Observer should be 'stopped' for stop
-     * listening events of an Observable!
+     * Adds a disposable (Observer) to our disposable list [disposables]. Observer(s) should be 'stopped' for stop
+     * listening events of (an) Observable(s)!
+     * Remember that we could listen for many events of a use case, because of this, we dispose all Observable(s)
+     * from out disposables list.
      */
     private fun addDisposableSubscriber(disposable: Disposable) {
         disposables.add(disposable)
