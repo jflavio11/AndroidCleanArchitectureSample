@@ -7,6 +7,7 @@ import com.jflavio1.cleanarchsample.view.ShowMoviesView
 import com.jflavio1.domain.interactors.DefaultObserver
 import com.jflavio1.domain.interactors.ShowMoviesUseCaseImpl
 import com.jflavio1.domain.model.Movie
+import io.reactivex.observers.DisposableObserver
 
 /**
  * ShowMoviesListPresenterImpl
@@ -23,7 +24,21 @@ class ShowMoviesListPresenterImpl(var view: ShowMoviesView<MovieModel>, var getM
     }
 
     override fun loadMovieList() {
-        this.getMovies.executeUseCase(MoviesObserver(this.view), null)
+        this.getMovies.executeUseCase(object: DisposableObserver<List<Movie>>() {
+            override fun onComplete() {
+                view.hideLoader()
+            }
+
+            override fun onNext(t: List<Movie>) {
+                val mapper = MovieModelMapper()
+                view.renderMovieList(mapper.transformListMovie(t))
+            }
+
+            override fun onError(e: Throwable) {
+                this@ShowMoviesListPresenterImpl.showErrorMessage(e.toString())
+            }
+
+        }, null)
     }
 
     override fun onMoviesListLoaded(movieList: ArrayList<MovieModel>) {
@@ -42,18 +57,4 @@ class ShowMoviesListPresenterImpl(var view: ShowMoviesView<MovieModel>, var getM
     override fun destroy() {
         this.getMovies.dispose()
     }
-
-    private inner class MoviesObserver(val view: ShowMoviesView<MovieModel>) : DefaultObserver<List<Movie>>() {
-
-        override fun onComplete() {
-            view.hideLoader()
-        }
-
-        override fun onNext(t: List<Movie>) {
-            val mapper = MovieModelMapper()
-            view.renderMovieList(mapper.transformListMovie(t))
-        }
-
-    }
-
 }
